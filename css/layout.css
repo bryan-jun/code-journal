@@ -13,14 +13,29 @@
   flex-wrap: wrap;
 }
 
+.field-row {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
 .column-full,
 .column-half {
   width: 100%;
 }
 
+.right {
+  justify-content: right;
+  padding-right: 0;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
+  }
+
+  .right {
+    justify-content: right;
+    padding-right: 10px;
   }
 
   .column-full,
