@@ -22,8 +22,5 @@ journalForm.addEventListener('submit', function (event) {
   data.entries.unshift(entry);
   photo.setAttribute('src', 'images/placeholder-image-square.jpg');
 
-  journalForm.getElementById('title').reset();
-  journalForm.getElementById('photo').reset();
-  journalForm.getElementById('notes').reset();
-
+  journalForm.getElementById('journal').reset();
 }, false);
