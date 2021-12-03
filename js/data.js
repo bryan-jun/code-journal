@@ -1,6 +1,6 @@
 /* exported data */
 var data = {
-  view: 'entry-form',
+  view: 'entries',
   entries: [],
   editing: null,
   nextEntryId: 1
