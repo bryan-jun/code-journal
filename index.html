@@ -1,25 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Journal</title>
   <link rel="icon" href="images/favicon.ico">
-  <link
-    rel="stylesheet"
-    crossorigin="anonymous"
+  <link rel="stylesheet" crossorigin="anonymous"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <header>
+
+    <div class="header">
+      <p id="head">CODE JOURNAL</p>
+    </div>
+
   </header>
   <main>
+    <div class="container">
+
+      <div data-view="entry-form" class="container">
+
+
+
+        <div class="row">
+          <div class="column-full">
+            <div class="form-title">New Entry</div>
+
+            <form id="journal">
+
+              <div class="row">
+                <div class="column-half">
+                  <div class="field-row">
+                    <img src="images/placeholder-image-square.jpg" class="image">
+                  </div>
+                </div>
+                <div class="column-half">
+                  <div class="field-row">
+                    <div><label for="title" class="section">Title</label></div>
+                  </div>
+                  <div class="field-row">
+                    <div><input type="text" name="title" class="text-input" id="title" required></div>
+                  </div>
+                  <div class="field-row">
+                    <div><label for="photo">Photo URL</label></div>
+                  </div>
+                  <div class="field-row">
+                    <div><input type="text" name="photo" class="textInput" id="photo" required></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row field-row">
+                <div class="column-full">
+                  <div><label for="notes" class="section">Notes</label></div>
+                </div>
+              </div>
+
+              <div class="row field-row">
+                <div class="column-full">
+                  <div><textarea type="notes" name="notes" id="notes" required></textarea></div>
+                </div>
+              </div>
+
+              <div class="row field-row right">
+                <div><input type="submit" name="save" value="Save" class="save-button"></div>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>
