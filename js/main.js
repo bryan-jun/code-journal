@@ -106,6 +106,7 @@ photoUrl.addEventListener('input', function (event) {
 }, false);
 
 journalForm.addEventListener('submit', function (event) {
+  event.preventDefault();
   var entry = {
 
     title: journalForm.elements.title.value,
@@ -117,7 +118,9 @@ journalForm.addEventListener('submit', function (event) {
   entry.nextEntryId = data.nextEntryId;
   data.nextEntryId += 1;
   data.entries.unshift(entry);
-  photo.setAttribute('src', 'images/placeholder-image-square.jpg');
+
+  var newRow = renderEntries(entry);
+  newEntryRow.prepend(newRow);
 
   journalForm.reset();
   entryTab.className = 'container';
