@@ -19,67 +19,83 @@
   <header>
 
     <div class="header">
-      <p id="head">CODE JOURNAL</p>
+      <div id="head">CODE JOURNAL</div>
+      <div id="entries-nav">Entries</div>
     </div>
 
   </header>
   <main>
-    <div class="container">
 
-      <div data-view="entry-form" class="container">
+    <div data-view="entry-form" class="container hidden" id="form-view">
 
+      <div class="row">
+        <div class="column-full">
 
+          <div class="form-title">New Entry</div>
 
-        <div class="row">
-          <div class="column-full">
-            <div class="form-title">New Entry</div>
+          <form id="journal">
 
-            <form id="journal">
-
-              <div class="row">
-                <div class="column-half">
-                  <div class="field-row">
-                    <img src="images/placeholder-image-square.jpg" class="image">
-                  </div>
-                </div>
-                <div class="column-half">
-                  <div class="field-row">
-                    <div><label for="title" class="section">Title</label></div>
-                  </div>
-                  <div class="field-row">
-                    <div><input type="text" name="title" class="text-input" id="title" required></div>
-                  </div>
-                  <div class="field-row">
-                    <div><label for="photo">Photo URL</label></div>
-                  </div>
-                  <div class="field-row">
-                    <div><input type="text" name="photo" class="textInput" id="photo" required></div>
-                  </div>
+            <div class="row">
+              <div class="column-half">
+                <div class="field-row">
+                  <img src="images/placeholder-image-square.jpg" class="image">
                 </div>
               </div>
-
-              <div class="row field-row">
-                <div class="column-full">
-                  <div><label for="notes" class="section">Notes</label></div>
+              <div class="column-half">
+                <div class="field-row">
+                  <div><label for="title" class="section">Title</label></div>
+                </div>
+                <div class="field-row">
+                  <div><input type="text" name="title" class="text-input" id="title" required></div>
+                </div>
+                <div class="field-row">
+                  <div><label for="photo">Photo URL</label></div>
+                </div>
+                <div class="field-row">
+                  <div><input type="text" name="photo" class="text-input" id="photo" required></div>
                 </div>
               </div>
+            </div>
 
-              <div class="row field-row">
-                <div class="column-full">
-                  <div><textarea type="notes" name="notes" id="notes" required></textarea></div>
-                </div>
+            <div class="row field-row">
+              <div class="column-full">
+                <div><label for="notes" class="section">Notes</label></div>
               </div>
+            </div>
 
-              <div class="row field-row right">
-                <div><input type="submit" name="save" value="Save" class="save-button"></div>
+            <div class="row field-row">
+              <div class="column-full">
+                <div><textarea type="notes" name="notes" id="notes" required></textarea></div>
               </div>
-            </form>
+            </div>
 
-          </div>
+            <div class="row field-row right">
+              <div><input type="submit" name="save" value="Save" class="save-button"></div>
+            </div>
+          </form>
 
         </div>
+
       </div>
     </div>
+
+    <div data-view="entries" class="container entries" id="entry-view">
+
+      <div class="row">
+        <div class="column-full flex-row">
+
+          <div class="form-title">Entries</div>
+          <button id="new-button">New</button>
+        </div></div>
+
+      <ul>
+
+      </ul>
+
+
+    </div>
+
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
