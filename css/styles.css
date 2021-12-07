@@ -58,6 +58,8 @@ textarea {
   font-size: 25px;
   font-weight: 900;
   padding-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .entry-row {
@@ -87,4 +89,12 @@ textarea {
 .flex-row {
   display: flex;
   justify-content: space-between;
+}
+
+#edit-icon {
+  color: #56007a;
+}
+
+#edit-icon:hover {
+  cursor: pointer;
 }

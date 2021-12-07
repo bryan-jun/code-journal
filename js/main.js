@@ -4,6 +4,7 @@
 function renderEntries(entry) {
   var newRow = document.createElement('div');
   newRow.setAttribute('class', 'row entry-row');
+  newRow.setAttribute('id', entry.nextEntryId);
 
   var newColumn = document.createElement('div');
   newColumn.setAttribute('class', 'column-half');
@@ -47,6 +48,13 @@ function renderEntries(entry) {
   noteDesc.textContent = entry.notesP;
 
   newField3.appendChild(noteDesc);
+
+  var edit = document.createElement('i');
+  edit.setAttribute('class', 'fas fa-edit');
+  edit.setAttribute('id', 'edit-icon');
+  edit.setAttribute('entryId', entry.nextEntryId);
+
+  newField2.appendChild(edit);
 
   return newRow;
 
@@ -107,23 +115,61 @@ photoUrl.addEventListener('input', function (event) {
 
 journalForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  var entry = {
 
-    title: journalForm.elements.title.value,
-    photoP: journalForm.elements.photo.value,
-    notesP: journalForm.elements.notes.value
+  if (formTitle.textContent === 'New Entry') {
+    var entry = {
 
-  };
+      title: journalForm.elements.title.value,
+      photoP: journalForm.elements.photo.value,
+      notesP: journalForm.elements.notes.value
 
-  entry.nextEntryId = data.nextEntryId;
-  data.nextEntryId += 1;
-  data.entries.unshift(entry);
+    };
 
-  var newRow = renderEntries(entry);
-  newEntryRow.prepend(newRow);
+    entry.nextEntryId = data.nextEntryId;
+    data.nextEntryId += 1;
+    data.entries.unshift(entry);
+
+    var newRow = renderEntries(entry);
+    newEntryRow.prepend(newRow);
+
+  } else {
+
+    data.entries[data.nextEntryId - editingId - 1].title = journalForm.elements.title.value;
+    data.entries[data.nextEntryId - editingId - 1].photoP = journalForm.elements.photo.value;
+    data.entries[data.nextEntryId - editingId - 1].notesP = journalForm.elements.notes.value;
+
+    var updated = renderEntries(data.entries[data.nextEntryId - editingId - 1]);
+    var old = document.getElementById(editingId);
+
+    newEntryRow.replaceChild(updated, old);
+  }
 
   journalForm.reset();
   entryTab.className = 'container';
   formTab.className = 'container hidden';
   data.view = 'entries';
 }, false);
+
+newEntryRow.addEventListener('click', editFunction, false);
+
+var formTitle = document.querySelector('.form-title');
+
+var editingId = 0;
+
+function editFunction(event) {
+  if (event.target && event.target.matches('#edit-icon')) {
+    entryTab.className = 'container hidden';
+    formTab.className = 'container';
+
+    data.editing = data.entries[data.nextEntryId - event.target.getAttribute('entryId') - 1];
+    editingId = data.editing.nextEntryId;
+
+    journalForm.elements.title.value = data.editing.title;
+    journalForm.elements.notes.value = data.editing.notesP;
+    journalForm.elements.photo.value = data.editing.photoP;
+    photo.setAttribute('src', data.editing.photoP);
+
+    formTitle.textContent = 'Edit Entry';
+
+  }
+}
